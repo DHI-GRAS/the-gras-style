@@ -18,3 +18,10 @@
 1. [IO sandwich](http://www.perrygeo.com/processing-vector-features-in-python.html): 
     split up functions into three functions: (1) file input, (2) processing 
     (e.g. take numpy, return numpy), and (3) file output.
+1. Be conscious of what you expect and raise descriptive exceptions when you do not get it, e.g.
+```python
+pattern = '/path/*.ext'
+infiles = glob.glob(pattern)
+if not infiles:
+    raise RuntimeError('No files found with pattern \'{}\'.'.format(pattern))
+```
