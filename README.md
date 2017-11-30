@@ -30,12 +30,8 @@ if not infiles:
 
 ### Package architecture
 
-1. Think carefully before adding a dependency to a repository that is not in pure Python. Every dependency you add will lead to larger environments, longer installation time, and additional maintenance on updates. If you include a big library and end up using just a small part of it, think triple carefully.
-
-  Rule of thumb: Adding a library for the purpose it was written is usually okay.
-1. Don't be shy to create a separate repository for new, powerful, re-usable features if you deem it necessary. However, keep in mind that every repository must at least have a proper `README` file, and scattering functionality across repositories does make installation and maintenance somewhat more cumbersome.
-
-  Rule of thumb: Refrain from creating a new repository until you want to use the feature from at least two different projects.
+1. Think carefully before adding a dependency to a repository that is not in pure Python. Every dependency you add will lead to larger environments, longer installation time, and additional maintenance on updates. If you include a big library and end up using just a small part of it, think triple carefully. Rule of thumb: Adding a library for the purpose it was written for is usually okay.
+1. Don't be shy to create a separate repository for new, powerful, re-usable features if you deem it necessary. However, keep in mind that every repository must at least have a proper `README` file, and scattering functionality across repositories does make installation and maintenance somewhat more cumbersome. Rule of thumb: Refrain from creating a new repository until you want to use the feature from at least two different projects.
 
 ## Git workflow
 
@@ -43,6 +39,8 @@ if not infiles:
 2. If you contribute code to a repository that has CI (*Continuous Integration*, e.g. through Travis CI) set up, you *must* create a Pull Request to commit to `master`.
 3. Merge as often as possible, especially when multiple people are working on the same repository.
 4. Inform your collaborators before major refactoring operations.
+5. Prefix Pull Requests that are work in progress with `WIP`. Remove the `WIP` label before merging. Do not merge Pull Requests with the `WIP` label.
+6. Only squash commits in exceptional circumstances (e.g. after doing many small changes that were reversed later on).
 
 ## Testing
 
