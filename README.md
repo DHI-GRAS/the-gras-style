@@ -33,6 +33,11 @@ if not infiles:
 1. Think carefully before adding a dependency to a repository that is not in pure Python. Every dependency you add will lead to larger environments, longer installation time, and additional maintenance on updates. If you include a big library and end up using just a small part of it, think triple carefully. Rule of thumb: Adding a library for the purpose it was written for is usually okay.
 1. Don't be shy to create a separate repository for new, powerful, re-usable features if you deem it necessary. However, keep in mind that every repository must at least have a proper `README` file, and scattering functionality across repositories does make installation and maintenance somewhat more cumbersome. Rule of thumb: Refrain from creating a new repository until you want to use the feature from at least two different projects.
 
+## Git repos
+
+1. Create public repositories whenever possible. But make sure they are tidy.
+1. Naming: Prefer dashes `-` over underscores `_` in repo names (e.g. `my-python-package.git/my_python_package/__init__.py`).
+
 ## Git workflow
 
 1. If there is more than one person working on the repository, do not commit directly into `master` (except hotfixes or when changing less than 10 lines of code).
