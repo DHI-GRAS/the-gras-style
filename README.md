@@ -1,6 +1,6 @@
 # So, you want to learn about The GRAS Style ...
 
-This documents contains some of the general guidelines we have agreed upon. Read it carefully, follow it, and extend it where necessary. If you don't understand something, or are unsure how to design your software, talk to people. Good software is an amalgamation of opinions, a common, balanced denominator of as many use cases as possible. Discussions are a requirement to achieve this.
+This document contains some of the general guidelines we at DHI GRAS have agreed upon. Read it carefully, follow it, and extend it where necessary. If you don't understand something, or are unsure how to design your software, talk to people. Good software is an amalgamation of opinions, a common, balanced denominator of as many use cases as possible. Discussions are a requirement to achieve this.
 
 ## Python Specifics
 
