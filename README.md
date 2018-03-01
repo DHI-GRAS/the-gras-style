@@ -1,5 +1,7 @@
 # So, you want to learn about The GRAS Style ...
 
+This documents contains some of the general guidelines we have agreed upon. Read it carefully, follow it, and extend it where necessary. If you don't understand something, or are unsure how to design your software, talk to people. Good software is an amalgamation of opinions, a common, balanced denominator of as many use cases as possible. Discussions are a requirement to achieve this.
+
 ## Python Specifics
 
 ### General coding style
@@ -30,15 +32,35 @@ if not infiles:
 
 ### Package architecture
 
-1. Think carefully before adding a dependency to a repository that is not in pure Python. Every dependency you add will lead to larger environments, longer installation time, and additional maintenance on updates. If you include a big library and end up using just a small part of it, think triple carefully. Rule of thumb: Adding a library for the purpose it was written for is usually okay.
+1. Think carefully before adding a dependency to a repository that is not in pure Python. Every dependency you add will lead to larger environments, longer installation time, and additional maintenance on updates. If you include a big library and end up using just a small part of it, think triple carefully. Rule of thumb: Adding a library for the exact purpose it was written for is usually okay.
 1. Don't be shy to create a separate repository for new, powerful, re-usable features if you deem it necessary. However, keep in mind that every repository must at least have a proper `README` file, and scattering functionality across repositories does make installation and maintenance somewhat more cumbersome. Rule of thumb: Refrain from creating a new repository until you want to use the feature from at least two different projects.
 
-## Git repos
+## Compatibility
+
+When designing your package, assume as little as possible about the system that is used to run it. You *must not* assume a certain folder structure. You *may* assume a certain target OS, if keeping your code multi-platform compliant would impose an unreasonable amount of extra maintenance.
+
+If your code does not run on other systems, it is worthless.
+
+## Command Line Interfaces (CLI)
+
+A good CLI is crucial to the usability and thus success of your package, but also one of the hardest things to get right. There is no silver bullet, but these general guidelines may help:
+
+1. Use a sophisticated, well-established library to handle the CLI for you. For Python, we prefer `click`.
+1. Follow the conventions set by the GNU toolchain. Arguments specified with a single `-` may only be followed by a single character; otherwise, use `--`. Example: `-i` and `--input` instead of `-in` or `--i`. Use hyphens to split words in your arguments: `--input-folder` instead of `--inputfolder` or `--input_folder`.
+1. Make proper use of flags and multi-argument commands. `--debug` is better than `--debug=True`. `--input-files 1.tif 2.tif 3.tif` is better than `--input-files 1.tif,2.tif,3.tif`. If the former is not possible due to technical reasons, use `-i 1.tif -i 2.tif -i 3.tif`.
+1. Write expressive help messages. Include default values for arguments.
+
+Also, think whether you need a CLI at all. Is your package just a Python wrapper around a command line tool? Chances are, you will be better off calling the command line tool in question directly, and maybe just do some pre-processing in Python. Python is generally good "glue", but there are better choices for large workflows ([Snakemake](http://snakemake.readthedocs.io/en/stable/) can be a good choice for that).
+
+
+## Version Control (Git)
+
+### Repository creation
 
 1. Create public repositories whenever possible. But make sure they are tidy.
 1. Naming: Prefer dashes `-` over underscores `_` in repo names (e.g. `my-python-package.git/my_python_package/__init__.py`).
 
-## Git workflow
+### Git workflow
 
 1. If there is more than one person working on the repository, do not commit directly into `master` (except hotfixes or when changing less than 10 lines of code).
 2. If you contribute code to a repository that has CI (*Continuous Integration*, e.g. through Travis CI) set up, you *must* create a Pull Request to commit to `master`.
@@ -49,5 +71,5 @@ if not infiles:
 
 ## Testing
 
-1. If you contribute code to a repository that has CI set up, you *must* at least write one test for your code (could be as simple as 'code runs without crashing').
-2. If you contribute code to a repository that also measures code coverage, your addition must not decrease coverage (unless in rare cases, e.g. when some code is untestable).
+1. If you contribute code to a repository that has continuous integration (CI) set up, you *must* at least write one test for your code (could be as simple as "code runs without crashing").
+2. If you contribute code to a repository that also measures code coverage, your addition must not decrease coverage. If your code is *inherently untestable* for technical reasons, you may use `# pragma: no cover` to exclude a certain branch or function from coverage reports.
