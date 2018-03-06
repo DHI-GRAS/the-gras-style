@@ -1,0 +1,6 @@
+# WARNING: do not specify here on public repositories (use Travis secrets instead)
+codecov:
+  token:
+
+ignore:
+  - _version.py

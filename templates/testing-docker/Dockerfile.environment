@@ -1,0 +1,11 @@
+FROM continuumio/miniconda:latest
+
+MAINTAINER Dion Häfner <dimh@dhigroup.com>
+
+# create environment
+COPY environment.yml .
+RUN conda env create -f environment.yml && conda clean -tipsy
+
+# activate environment on login
+RUN touch /root/.bashrc && echo 'source activate bathymetry' >> /root/.bashrc
+SHELL ["/bin/bash", "-l", "-c"]
