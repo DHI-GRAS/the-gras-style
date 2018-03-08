@@ -22,12 +22,12 @@ This document contains some of the general guidelines we at DHI GRAS have agreed
     split up functions into three functions: (1) file input, (2) processing
     (e.g. take numpy, return numpy), and (3) file output.
 1. Defensive programming: Be conscious of what you expect and raise descriptive exceptions when you do not get it, e.g.
-```python
-pattern = '/path/*.ext'
-infiles = glob.glob(pattern)
-if not infiles:
-    raise RuntimeError('No files found with pattern \'{}\'.'.format(pattern))
-```
+    ```python
+    pattern = '/path/*.ext'
+    infiles = glob.glob(pattern)
+    if not infiles:
+        raise RuntimeError('No files found with pattern \'{}\'.'.format(pattern))
+    ```
 1. Use the modern `rasterio` and `fiona` instead of the old `gdal` and `ogr` Python bindings.
 
 ### Package architecture
@@ -63,13 +63,13 @@ Also, think whether you need a CLI at all. Is your package just a Python wrapper
 ### Git workflow
 
 1. If there is more than one person working on the repository, do not commit directly into `master` (except hotfixes or when changing less than 10 lines of code).
-2. If you contribute code to a repository that has CI (*Continuous Integration*, e.g. through Travis CI) set up, you *must* create a Pull Request to commit to `master`.
-3. Merge as often as possible, especially when multiple people are working on the same repository.
-4. Inform your collaborators before major refactoring operations.
-5. Prefix Pull Requests that are work in progress with `WIP`. Remove the `WIP` label before merging. Do not merge Pull Requests with the `WIP` label.
-6. Only squash commits in exceptional circumstances (e.g. after doing many small changes that were reversed later on).
+1. If you contribute code to a repository that has CI (*Continuous Integration*, e.g. through Travis CI) set up, you *must* create a Pull Request to commit to `master`.
+1. Merge as often as possible, especially when multiple people are working on the same repository.
+1. Inform your collaborators before major refactoring operations.
+1. Prefix Pull Requests that are work in progress with `WIP`. Remove the `WIP` label before merging. Do not merge Pull Requests with the `WIP` label.
+1. Only squash commits in exceptional circumstances (e.g. after doing many small changes that were reversed later on).
 
 ## Testing
 
 1. If you contribute code to a repository that has continuous integration (CI) set up, you *must* at least write one test for your code (could be as simple as "code runs without crashing").
-2. If you contribute code to a repository that also measures code coverage, your addition must not decrease coverage. If your code is *inherently untestable* for technical reasons, you may use `# pragma: no cover` to exclude a certain branch or function from coverage reports.
+1. If you contribute code to a repository that also measures code coverage, your addition must not decrease coverage. If your code is *inherently untestable* for technical reasons, you may use `# pragma: no cover` to exclude a certain branch or function from coverage reports.
