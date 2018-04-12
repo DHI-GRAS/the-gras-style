@@ -31,6 +31,7 @@ If you don't understand something, or are unsure how to design your software, ta
         raise RuntimeError('No files found with pattern \'{}\'.'.format(pattern))
     ```
 1. Use the modern `rasterio` and `fiona` instead of the old `gdal` and `ogr` Python bindings.
+1. Always use the Python [format string](https://docs.python.org/3/library/string.html#format-string-syntax) instead of the old `%` syntax or `+str(something)+`.
 
 ### Package architecture
 
