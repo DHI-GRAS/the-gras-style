@@ -86,3 +86,12 @@ Also, think whether you need a CLI at all. Is your package just a Python wrapper
 
 1. If you contribute code to a repository that has continuous integration (CI) set up, you *must* at least write one test for your code (could be as simple as "code runs without crashing").
 1. If you contribute code to a repository that also measures code coverage, your addition must not decrease coverage. If your code is *inherently untestable* for technical reasons, you may use `# pragma: no cover` to exclude a certain branch or function from coverage reports.
+
+## How we write Snakefiles
+
+1. The most important aspect when writing Snakefiles is to make sure that a rule may only succeed if it actually succeeded (that is, to minimize false positive executions), and to never modify products in-place. A workflow that strictly adheres to these rules will never leave the data storage in a corrupted state. It is therefore critical to test your assumptions about the output products of a rule before exiting, e.g. by asserting that files were actually created (and contain meaningful data). We call this *defensive rule writing*.
+1. Snakefiles should be as self-contained as possible. One of the strengths of Snakemake is that it is very transparent how products are created; an advantage that is nullified if too much logic is moved outside the Snakefile.
+1. When using directories as outputs (via the `directory` directive), it is often useful to add a rule that "scatters" the directory contents to make them visible to Snakemake. These scatter rules take the created directory as input and outputs the products that are required downstream without modifying them.
+1. Make sure that your rules do not leave any temporary files behind. The `shadow` directive can be helpful to enforce this.
+1. Add a graphical version of your workflow to the README (via `snakemake --rulegraph | dot -Tpng -o graph.png`)
+1. Group output folder trees by product, not by scene (i.e., `cloudmask/{scene_id}`, `extracted/{scene_id}` instead of `{scene_id}/cloudmask` and `{scene_id}/extracted`).
