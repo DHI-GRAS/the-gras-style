@@ -19,9 +19,10 @@ If you don't understand something, or are unsure how to design your software, ta
 
 ### House rules
 
-1. Always use [`os.path`](https://docs.python.org/library/os.path.html) or, for new Python-3-only projects, [`pathlib`](https://docs.python.org/library/pathlib.html) for handling file paths - never split e.g. by literal slashes.
+1. Python 2 is dead.
+1. Use [`pathlib`](https://docs.python.org/library/pathlib.html) for handling file paths - never split e.g. by literal slashes. For Python 2 compatibily in legacy projects, use [`os.path`](https://docs.python.org/library/os.path.html).
 1. Consider using the [IO sandwich](http://www.perrygeo.com/processing-vector-features-in-python.html) pattern:
-    split up functions into three functions: (1) file input, (2) processing
+    split up tasks into three functions: (1) file input, (2) processing
     (e.g. take numpy, return numpy), and (3) file output.
 1. Defensive programming: Be conscious of what you expect and raise descriptive exceptions when you do not get it, e.g.
     ```python
@@ -36,7 +37,8 @@ If you don't understand something, or are unsure how to design your software, ta
 ### Package architecture
 
 1. Think carefully before adding a dependency to a repository that is not in pure Python. Every dependency you add will lead to larger environments, longer installation time, and additional maintenance on updates. If you include a big library and end up using just a small part of it, think triple carefully. Rule of thumb: Adding a library for the exact purpose it was written for is usually okay.
-1. Don't be shy to create a separate repository for new, powerful, re-usable features if you deem it necessary. However, keep in mind that every repository must at least have a proper `README` file, and scattering functionality across repositories does make installation and maintenance somewhat more cumbersome. Rule of thumb: Refrain from creating a new repository until you want to use the feature from at least two different projects.
+1. Don't be shy to create a separate repository though for new, powerful, re-usable features if you deem it necessary. Keep in mind that every repository must at least have a proper `README` file, and scattering functionality across repositories does make installation and maintenance somewhat more cumbersome.
+1. Rule of three: Refrain from splitting moving code a separate package / module until you want to use the feature from at least [three](https://en.wikipedia.org/wiki/Rule_of_three_(computer_programming)) different projects.
 
 
 ## Compatibility
