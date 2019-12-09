@@ -13,9 +13,10 @@ If you don't understand something, or are unsure how to design your software, ta
 1. The only exception to PEP8: Lines may be up to 100 columns wide.
 1. Use the Python linter `flake8` and make sure there are no violations (plugins are available for most editors).
 1. Many reasonable suggestions are found in [Google's Python Style Guide](https://google.github.io/styleguide/pyguide.html). Read it carefully, and violate it only in exceptional circumstances.
-1. Write docstrings for all public functions, in
+1. Write [docstrings](https://sphinxcontrib-napoleon.readthedocs.io) for all public functions, in
     [Numpydoc](https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt) format.
 1. Use concise and descriptive names. Avoid abbreviations for anything that isn't an acronym.
+1. Khan Academy's [style guide](https://github.com/Khan/style-guides/blob/master/style/python.md) is very similar to ours and a bit more elaborate 
 
 ### House rules
 
