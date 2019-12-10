@@ -24,10 +24,3 @@ script:
 
 notifications:
   email: false
-  slack:
-    rooms:
-      # WARNING: do not specify here on public repositories (use Travis encryption instead)
-      - dhigras:TPwMxNqVS9FeaTUJNZlMmL6i
-    on_failure: change
-    on_success: change
-    on_pull_requests: false
