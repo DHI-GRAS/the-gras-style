@@ -78,11 +78,12 @@ Also, think whether you need a CLI at all. Is your package just a Python wrapper
 
 ### Git workflow
 
-1. If there is more than one person working on the repository, do not commit directly into `master` (except hotfixes or when changing less than 10 lines of code).
-1. If you contribute code to a repository that has CI (*Continuous Integration*, e.g. through Travis CI) set up, you *must* create a Pull Request to commit to `master`.
+1. Write issues before you want to fix something and take the description seriously.
+1. Always create feature branches and PRs, even for small fixes (except maybe changing a line in the docs or so). Use `Closes #1` or `Fixes #1` or [similar](https://help.github.com/en/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword) to link issues to the pull request. You can also use these keywords in commit messages to close issues automatically.
+1. Only maintainers of a code base may assign issues and pull requests to other maintainers, add tags, and merge pull requests.
 1. Merge as often as possible, especially when multiple people are working on the same repository.
-1. Inform your collaborators before major refactoring operations.
-1. Prefix Pull Requests that are work in progress with `WIP`. Remove the `WIP` label before merging. Do not merge Pull Requests with the `WIP` label.
+1. Use git tags for ([semantic](https://semver.org/)!) versioning and tag frequently.
+1. Open Pull Requests that are work in progress as Draft Pull Requests first.
 1. Only squash commits in exceptional circumstances (e.g. after doing many small changes that were reversed later on).
 
 ## Testing
