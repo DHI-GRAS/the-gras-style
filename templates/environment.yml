@@ -1,9 +1,0 @@
-name: <somename>
-channels:
-    - conda-forge
-dependencies:
-    - python=3
-    - numpy
-    - pip
-    - pip:
-        - https://github.com/DHI-GRAS/itsybitsy/archive/master.zip
