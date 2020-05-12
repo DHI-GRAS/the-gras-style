@@ -16,30 +16,38 @@ If you don't understand something, or are unsure how to design your software, ta
 1. Write [docstrings](https://sphinxcontrib-napoleon.readthedocs.io) for all public functions, in
     [Numpydoc](https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt) format.
 1. Use concise and descriptive names. Avoid abbreviations for anything that isn't an acronym.
-1. Khan Academy's [style guide](https://github.com/Khan/style-guides/blob/master/style/python.md) is very similar to ours and a bit more elaborate 
+1. Khan Academy's [style guide](https://github.com/Khan/style-guides/blob/master/style/python.md) is very similar to ours and a bit more elaborate
+1. We have not yet decided on hand-crafted PEP8/flake8 vs [Black](https://github.com/psf/black) yet. But do either.
 
 ### House rules
 
-1. Python 2 is dead.
-1. Use [`pathlib`](https://docs.python.org/library/pathlib.html) for handling file paths - never split e.g. by literal slashes. For Python 2 compatibily in legacy projects, use [`os.path`](https://docs.python.org/library/os.path.html).
+1. Python >=3.6 only.
+1. Use [`pathlib`](https://docs.python.org/library/pathlib.html) for handling file paths - never split e.g. by literal slashes.
 1. Consider using the [IO sandwich](http://www.perrygeo.com/processing-vector-features-in-python.html) pattern:
     split up tasks into three functions: (1) file input, (2) processing
     (e.g. take numpy, return numpy), and (3) file output.
 1. Defensive programming: Be conscious of what you expect and raise descriptive exceptions when you do not get it, e.g.
     ```python
-    pattern = '/path/*.ext'
-    infiles = glob.glob(pattern)
+    infiles = list(Path('/path').glob('*.ext'))
     if not infiles:
         raise RuntimeError('No files found with pattern \'{}\'.'.format(pattern))
     ```
-1. Use the modern `rasterio` and `fiona` instead of the old `gdal` and `ogr` Python bindings.
+1. Use `rasterio` and `fiona` instead of the old `gdal` and `ogr` Python bindings.
 1. Always use the Python [format string](https://docs.python.org/3/library/string.html#format-string-syntax) instead of the old `%` syntax or `+str(something)+`.
 
-### Package architecture
+### Dependencies
 
-1. Think carefully before adding a dependency to a repository that is not in pure Python. Every dependency you add will lead to larger environments, longer installation time, and additional maintenance on updates. If you include a big library and end up using just a small part of it, think triple carefully. Rule of thumb: Adding a library for the exact purpose it was written for is usually okay.
+1. Think carefully before adding a dependency that is not in pure Python to a repository. Every dependency you add will lead to larger environments, longer installation time, and additional maintenance on updates. If you include a big library and end up using just a small part of it, think triple carefully. Rule of thumb: Adding a library for the exact purpose it was written for is usually okay.
 1. Don't be shy to create a separate repository though for new, powerful, re-usable features if you deem it necessary. Keep in mind that every repository must at least have a proper `README` file, and scattering functionality across repositories does make installation and maintenance somewhat more cumbersome.
 1. Rule of three: Refrain from splitting moving code a separate package / module until you want to use the feature from at least [three](https://en.wikipedia.org/wiki/Rule_of_three_(computer_programming)) different projects.
+
+
+### Packaging and releases
+
+1. Keep to the latest package structure
+1. Consider using `setup.cfg` or `pyproject.toml` for static info
+1. Use [`setuptools-scm`](https://github.com/pypa/setuptools_scm/) and (semantic) versions from tags (see Git workflow)
+1. Automate the release
 
 
 ## Compatibility
@@ -82,7 +90,7 @@ Also, think whether you need a CLI at all. Is your package just a Python wrapper
 1. Always create feature branches and PRs, even for small fixes (except maybe changing a line in the docs or so). Use `Closes #1` or `Fixes #1` or [similar](https://help.github.com/en/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword) to link issues to the pull request. You can also use these keywords in commit messages to close issues automatically.
 1. Only maintainers of a code base may assign issues and pull requests to other maintainers, add tags, and merge pull requests.
 1. Merge as often as possible, especially when multiple people are working on the same repository.
-1. Use git tags for ([semantic](https://semver.org/)!) versioning and tag frequently.
+1. Use git tags for ([semantic](https://semver.org/)!) versioning and tag frequently, e.g. `v1.0.0`, `v2.0.0-beta1` or `v3.0.0-rc1`.
 1. Open Pull Requests that are work in progress as Draft Pull Requests first.
 1. Only squash commits in exceptional circumstances (e.g. after doing many small changes that were reversed later on).
 
