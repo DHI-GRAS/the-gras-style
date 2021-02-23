@@ -3,7 +3,8 @@
 ## Repository creation
 
 1. Create public repositories whenever possible. But make sure they are tidy.
-1. Naming: Prefer dashes `-` over underscores `_` in repo names (e.g. `my-python-package.git/my_python_package/__init__.py`).
+2. Open Source is only open if you [add](https://docs.github.com/en/enterprise-server@3.0/github/building-a-strong-community/adding-a-license-to-a-repository) a corresponding license. Default to MIT.
+3. Naming: Prefer dashes `-` over underscores `_` in repo names (e.g. `my-python-package.git/my_python_package/__init__.py`).
 
 ## Git workflow
 
