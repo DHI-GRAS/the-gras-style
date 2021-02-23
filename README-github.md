@@ -1,4 +1,4 @@
-# Version Control (Git) and GitHub
+# Social Coding (Git and GitHub)
 
 ## Repository creation
 
