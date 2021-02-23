@@ -2,7 +2,7 @@
 
 This document contains some of the general guidelines we at DHI GRAS have agreed upon. Read it carefully, follow it, and extend it where necessary.
 
-Here is the style:
+Here is all the style:
 
 * [Python](README-python.md)
 * [Frontend](README-frontent.md)
