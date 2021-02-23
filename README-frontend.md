@@ -1,4 +1,5 @@
-# Frontend (#frontend)
+# Frontend
+
 Our front-end style guide is based on the [Airbnb JS style guide](https://github.com/airbnb/javascript) and [Airbnb React style guide](https://github.com/airbnb/javascript/tree/master/react). A selection of points are highlighted below. For any other questions consider the [Airbnb React style guide](https://github.com/airbnb/javascript/tree/master/react).
 
 ## IDE
@@ -62,5 +63,3 @@ Map
 			- SearchControl
 ```
 Use the 'components' folder for components that are shared accross the application.
-
-

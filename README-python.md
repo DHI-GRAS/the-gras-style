@@ -1,4 +1,4 @@
-# Python Specifics
+# Python
 
 ## General coding style
 
@@ -68,14 +68,12 @@ A good CLI is crucial to the usability and thus success of your package, but als
 
 Also, think whether you need a CLI at all. Is your package just a Python wrapper around a command line tool? Chances are, you will be better off calling the command line tool in question directly, and maybe just do some pre-processing in Python. Python is generally good "glue", but there are better choices for large workflows ([Snakemake](http://snakemake.readthedocs.io/en/stable/) can be a good choice for that).
 
-
 # Testing
 
 1. If you contribute code to a repository that has continuous integration (CI) set up, you _must_ at least write one test for your code (could be as simple as "code runs without crashing").
 1. If you contribute code to a repository that also measures code coverage, your addition must not decrease coverage. If your code is _inherently untestable_ for technical reasons, you may use `# pragma: no cover` to exclude a certain branch or function from coverage reports.
 
-
-# How we write Snakefiles
+# How we write Snakefiles :snake:
 
 1. The most important aspect when writing Snakefiles is to make sure that a rule may only succeed if it actually succeeded (that is, to minimize false positive executions), and to never modify products in-place. A workflow that strictly adheres to these rules will never leave the data storage in a corrupted state. It is therefore critical to test your assumptions about the output products of a rule before exiting, e.g. by asserting that files were actually created (and contain meaningful data). We call this _defensive rule writing_.
 1. Snakefiles should be as self-contained as possible. One of the strengths of Snakemake is that it is very transparent how products are created; an advantage that is nullified if too much logic is moved outside the Snakefile.
