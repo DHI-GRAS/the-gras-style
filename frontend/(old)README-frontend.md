@@ -1,5 +1,16 @@
 # Frontend
 
+This file needs to be reviewed and looked over. Many specs from here might not be relevant anymore. Check out the rest of the files:
+
+Doccumentation:
+- [React code conventions](./doc/react-project-code-conventions.md)
+- [React project dependencies](./doc/react-project-dependencies.md)
+- [React project structure](./doc/react-project-structure.md)
+
+Code snippets:
+- [MaterialUI styling tips & tricks](./code-snippets/materialUI-styling.md)
+- [Azure Storage Account GitHub workflow](./code-snippets/storage-account-workflow.md)
+
 Our front-end style guide is based on the [Airbnb JS style guide](https://github.com/airbnb/javascript) and [Airbnb React style guide](https://github.com/airbnb/javascript/tree/master/react). A selection of points are highlighted below. For any other questions consider the [Airbnb React style guide](https://github.com/airbnb/javascript/tree/master/react).
 
 ## IDE
