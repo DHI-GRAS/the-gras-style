@@ -5,7 +5,7 @@ This document contains some of the general guidelines we at DHI GRAS have agreed
 Here is all the style:
 
 * [Python](README-python.md)
-* [Frontend](README-frontend.md)
+* [Frontend](./frontend)
 * [GitHub](README-github.md)
 
 If you don't understand something, or are unsure how to design your software, talk to people. Good software is an amalgamation of opinions, a common, balanced denominator of as many use cases as possible. Discussions are a requirement to achieve this.
